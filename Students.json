@@ -1,0 +1,26 @@
+[
+  {
+    "id": 101,
+    "name": "ARUN KUMAR",
+    "course": "Computer Science",
+    "fees": 45000,
+    "joiningDate": "2024-06-15",
+    "gpa": 8.5
+  },
+  {
+    "id": 102,
+    "name": "MEENA",
+    "course": "Information Technology",
+    "fees": 48000,
+    "joiningDate": "2023-07-20",
+    "gpa": 9.1
+  },
+  {
+    "id": 103,
+    "name": "RAJESH",
+    "course": "Data Science",
+    "fees": 52000,
+    "joiningDate": "2022-08-10",
+    "gpa": 7.8
+  }
+]

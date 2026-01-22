@@ -1,0 +1,38 @@
+[
+  {
+    "id": 101,
+    "residentName": "ARUN KUMAR",
+    "apartment": "A-101",
+    "maintenanceDue": 4500,
+    "lastPaidDate": "2025-01-10",
+    "rating": 4.5,
+    "complaintsResolved": 8
+  },
+  {
+    "id": 102,
+    "residentName": "MEENA SHARMA",
+    "apartment": "B-204",
+    "maintenanceDue": 5200,
+    "lastPaidDate": "2024-12-05",
+    "rating": 4.8,
+    "complaintsResolved": 12
+  },
+  {
+    "id": 103,
+    "residentName": "RAJESH PATEL",
+    "apartment": "C-305",
+    "maintenanceDue": 3800,
+    "lastPaidDate": "2025-02-18",
+    "rating": 4.2,
+    "complaintsResolved": 5
+  },
+  {
+    "id": 104,
+    "residentName": "PRIYA NAIR",
+    "apartment": "A-402",
+    "maintenanceDue": 6000,
+    "lastPaidDate": "2025-01-28",
+    "rating": 4.9,
+    "complaintsResolved": 15
+  }
+]
