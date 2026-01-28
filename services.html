@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Services Elite Resident Portal</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <style>
+    body {
+      background: linear-gradient(120deg, #1a2237 0%, #181e41 100%);
+      color: #ececec;
+      font-family: Poppins, Georgia, serif;
+      margin: 0;
+      padding: 0;
+    }
+    nav {
+      position: fixed;
+      width: 100vw;
+      top: 0; left: 0;
+      background: rgba(20,20,40,0.7);
+      z-index: 10;
+      display: flex; justify-content: flex-end; align-items: center;
+      height: 70px;
+      font-size: 1.08rem;
+    }
+    nav ul {
+      margin: 0 50px 0 0;
+      padding: 0;
+      list-style: none;
+      display: flex;
+      gap: 34px;
+    }
+    nav ul li a {
+      color: #fff;
+      text-decoration: none;
+      padding: 8px 18px;
+      border-radius: 4px;
+      transition: 0.25s background;
+    }
+    nav ul li a:hover, nav ul li a.active {
+      background: gold;
+      color: #333;
+    }
+    .service-header {
+      background: linear-gradient(rgba(24,30,65,0.63),rgba(40,32,70,0.75)), url('https://images.unsplash.com/photo-1515378791036-0648a3ef77b2?auto=format&fit=crop&w=1200&q=80') center/cover no-repeat;
+      min-height: 225px;
+      text-align: center;
+      color: #ffe066;
+      border-radius: 0 0 30px 30px;
+      box-shadow: 0 7px 44px #23294638;
+      padding-top: 55px;
+      padding-bottom: 38px;
+    }
+    .service-header h1 { font-size: 2.7em; font-family: Georgia; font-weight: 900; letter-spacing: 2px;}
+    .services-content {
+      max-width: 900px;
+      margin: 70px auto 0 auto;
+      background: rgba(32, 25, 47, 0.82);
+      border-radius: 16px;
+      padding: 42px 40px 38px 40px;
+      box-shadow: 0 8px 32px #181e4137;
+      color: #eedfa9;
+      font-size: 1.13em;
+    }
+    .services-content h2 { color: #f9c846; margin-top: 0;}
+    .services-list { margin-top: 20px;}
+    .services-list li { margin-bottom: 14px; }
+    @media (max-width:600px){
+      .services-content {padding: 25px 10px;}
+      nav ul {margin: 0 5vw 0 0;}
+    }
+  </style>
+</head>
+<body>
+<nav>
+  <ul>
+    <li><a href="index.html">Home</a></li>
+    <li><a href="about.html">About Us</a></li>
+    <li><a href="login.html">Login</a></li>
+    <li><a href="services.html" class="active">Services</a></li>
+    <li><a href="gallery.html">Gallery</a></li>
+    <li><a href="complaints.html">Complaints</a></li>
+    <li><a href="contact.html">Contact</a></li>
+    <li><a href="stats.html">Rating & Statistics</a></li>
+  </ul>
+</nav>
+<div class="service-header">
+  <h1>Our Community Services</h1>
+</div>
+<div class="services-content">
+  <h2>Services Available to Residents</h2>
+  <ul class="services-list">
+    <li>Maintenance and repairs</li>
+    <li>Housekeeping and waste management</li>
+    <li>Security and surveillance</li>
+    <li>Facility booking (gym, pool, hall, etc.)</li>
+    <li>Parking management</li>
+    <li>Billing and payment portal</li>
+    <li>Event and activity support</li>
+    <li>Complaints resolution</li>
+    <li>Emergency support services</li>
+  </ul>
+  <p>
+    For details on any service, please contact management or use the portal links.
+  </p>
+</div>
+</body>
+</html>
