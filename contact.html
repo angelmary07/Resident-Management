@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact | Elite Resident Portal</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        body { 
+            background: url('https://images.unsplash.com/photo-1464983953574-0892a716854b?auto=format&fit=crop&w=1200&q=80') no-repeat center center/cover; 
+            color: #fff; min-height: 100vh; 
+        }
+        header { 
+            background: rgba(21,30,65,0.98); color: #ffe066; 
+            padding: 20px 0 10px 0; border-radius: 0 0 20px 20px; 
+            box-shadow: 0 3px 32px #23294633; text-align: center; 
+        }
+        header h1 { font-family: 'Georgia', serif; font-size: 2.3em; letter-spacing: 2px; }
+        nav ul { list-style: none; padding: 0; margin: 13px 0 0 0;}
+        nav ul li { display: inline-block; margin: 0 9px;}
+        nav ul li a { color: #ffe066; text-decoration: none; font-weight: 600; padding: 7px 16px; border-radius: 12px; transition: background .21s, color .21s;}
+        nav ul li a.active, nav ul li a:hover { background: #ffe066; color: #232946 !important;}
+        .contact-box { 
+            background: rgba(0,0,0,0.72); padding: 33px 25px 22px 25px; 
+            border-radius: 15px; max-width: 600px; margin: 40px auto 26px auto; 
+            box-shadow: 0 10px 40px #23294666, 0 2px 14px #ffe06627; 
+        }
+        .contact-box h2 { color: #ffe066; font-family: 'Georgia', serif; margin-bottom: 17px;}
+        label { color: #ffe066; font-weight: 500; margin-top: 9px; margin-bottom: 2px; display: block;}
+        input, textarea { 
+            padding: 10px; width: 100%; border-radius: 5px; border: none; 
+            margin-bottom: 10px; background: #faf3ca; color: #232946; font-size:1.06em; 
+        }
+        textarea { min-height:80px; }
+        button { 
+            background: linear-gradient(90deg,#fff7e1 0%,#ffe066 100%); 
+            color: #232946; border: none; border-radius: 7px; cursor: pointer; 
+            font-weight:600; font-size:1.09em; box-shadow: 0 2px 8px #ffe06666; 
+            padding: 11px 24px; transition: box-shadow .2s, background .18s; margin-top: 13px; 
+        }
+        button:hover { background: #ffe066; color: #181e41; box-shadow: 0 6px 20px #ffe06699;}
+        .success-msg, .error-msg { 
+            padding: 13px; margin: 19px 0 7px 0; text-align: center; font-size: 1.1em; display: none; 
+        }
+        .success-msg { background: #f3ffe0; color: #226718; border-left: 6px solid #48d13d; }
+        .error-msg { background: #ffe0e0; color: #c00; border-left: 6px solid #c00; }
+        #loading { display: none; color: #ffe066; text-align: center; margin: 10px 0; }
+        .contact-details { 
+            margin: 19px 0 0 0; color: #fffde3; font-size:1.07em; 
+            background: rgba(255,224,102,0.08); border-radius:7px; padding:10px 18px; 
+        }
+        footer { 
+            margin-top:55px; text-align:center; color:#ffe066be; 
+            background:rgba(21,30,65,.91); font-size:1.09rem; 
+            padding: 18px 0 10px 0; border-radius: 18px 18px 0 0; 
+            box-shadow:0 -2px 17px #23294644 inset;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Community System</h1>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About Us</a></li>
+                <li><a href="login.html">Login</a></li>
+                <li><a href="services.html">Services</a></li>
+                <li><a href="gallery.html">Gallery</a></li>
+                <li><a href="complaints.html">Complaints</a></li>
+                <li><a href="contact.html" class="active">Contact</a></li>
+                <li><a href="stats.html">Rating & Statistics</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <div class="contact-box">
+            <h2>Contact Us</h2>
+            <form id="contactForm">
+                <label for="name">Your Name:</label>
+                <input type="text" id="name" name="name" required>
+
+                <label for="email">Your Email:</label>
+                <input type="email" id="email" name="email" required>
+
+                <label for="message">Message:</label>
+                <textarea id="message" name="message" required></textarea>
+
+                <button type="submit">Send Message</button>
+            </form>
+            <div id="loading">Sending... Please wait.</div>
+            <div id="contactMsg" class="success-msg"></div>
+            <div id="errorMsg" class="error-msg"></div>
+
+            <div class="contact-details">
+                <b>Admin Email:</b> elitecommunity@xyz.com<br>
+                <b>Phone:</b> +91 91234 56789<br>
+                <b>Office:</b> Elite Tower, Main Street, Bangalore
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Community Management System</p>
+    </footer>
+
+    <script>
+        document.getElementById("contactForm").addEventListener("submit", function(e) {
+            e.preventDefault();
+
+            document.getElementById("contactMsg").style.display = "none";
+            document.getElementById("errorMsg").style.display = "none";
+            document.getElementById("loading").style.display = "block";
+
+            let xhr = new XMLHttpRequest();
+            xhr.open("POST", "send_message.php", true);
+            xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+
+            xhr.onreadystatechange = function() {
+                if (xhr.readyState === 4) {
+                    document.getElementById("loading").style.display = "none";
+                    if (xhr.status === 200) {
+                        document.getElementById("contactMsg").innerHTML = "✅ " + xhr.responseText;
+                        document.getElementById("contactMsg").style.display = "block";
+                        document.getElementById("contactForm").reset();
+                    } else {
+                        document.getElementById("errorMsg").innerHTML = "❌ Error: " + xhr.status + " - " + xhr.responseText;
+                        document.getElementById("errorMsg").style.display = "block";
+                    }
+                }
+            };
+
+            let name = document.getElementById("name").value.trim();
+            let email = document.getElementById("email").value.trim();
+            let message = document.getElementById("message").value.trim();
+
+            let formData = `name=${encodeURIComponent(name)}&email=${encodeURIComponent(email)}&message=${encodeURIComponent(message)}`;
+
+            xhr.send(formData);
+        });
+    </script>
+</body>
+</html>
