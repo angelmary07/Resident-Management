@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Community System - Stats</title>
+<link rel="stylesheet" href="style.css">
+<style>
+body {
+  background: url('https://images.unsplash.com/photo-1501426026826-31c667bdf23d?auto=format&fit=crop&w=1200&q=80') no-repeat center center/cover;
+  color: #fff;
+  min-height:100vh;
+}
+header {
+  background: rgba(21,30,65,0.98);
+  color: #ffe066;
+  padding: 20px 0 10px 0;
+  border-radius: 0 0 20px 20px;
+  box-shadow: 0 3px 32px #23294633;
+  text-align: center;
+}
+header h1 { font-family: 'Georgia', serif; font-size: 2.3em; letter-spacing: 2px; }
+nav ul { list-style: none; padding: 0; margin: 13px 0 0 0;}
+nav ul li { display: inline-block; margin: 0 9px;}
+nav ul li a { color: #ffe066; text-decoration: none; font-weight: 600; padding: 7px 16px; border-radius: 12px; transition: background .21s, color .21s;}
+nav ul li a.active, nav ul li a:hover { background: #ffe066; color: #232946 !important;}
+.page-box {
+  background: rgba(0,0,0,0.66);
+  padding: 30px 30px 27px 30px;
+  border-radius: 16px;
+  max-width: 720px;
+  margin: 36px auto 32px auto;
+  box-shadow: 0 10px 40px #23294666, 0 2px 14px #ffe06627;
+}
+label { color: #ffe066; font-weight: 500; margin-top: 8px; margin-bottom: 1px; display: block; }
+input[type=number] { padding: 10px; margin: 6px 0 7px 0; width: 100%; border-radius: 5px; border: none; background: #faf3ca; color: #232946; font-size:1.04em;}
+button { margin-top: 10px; padding: 10px 20px; background: linear-gradient(90deg,#fff7e1 0%,#ffe066 100%); color: #232946; border: none; border-radius: 7px; cursor: pointer; font-weight:600; font-size:1.1em; box-shadow: 0 2px 8px #ffe06666; transition: box-shadow .2s, background .18s;}
+button:hover { background: #ffe066; color: #181e41; box-shadow: 0 6px 20px #ffe06699;}
+#statsBoxesRow { margin-top: 22px; margin-bottom: 7px; display: flex; flex-wrap: wrap; gap: 16px;}
+.stat-box {
+  min-width: 170px;
+  flex: 1 1 170px;
+  background: linear-gradient(120deg, #ffe066 80%, #232946 120%);
+  color: #232946;
+  border-radius: 13px;
+  box-shadow: 0 2px 16px #151d2e44, 0 1px 7px #ffe06638;
+  padding: 17px 15px 13px 19px;
+  font-family: 'Georgia';
+  font-size: 1.13em;
+  text-align: left;
+  font-weight: 650;
+  letter-spacing: .03em;
+  transition: box-shadow 0.2s;
+  margin-bottom:3px;
+  border-left: 6px solid #fbe96a;
+}
+.stat-title { font-size:0.88em;font-weight:700;line-height:1.1em;}
+.stat-value { font-size:1.19em;font-weight:700;margin-top:5px; }
+#stars span { font-size: 34px; cursor: pointer; color: gold; transition: text-shadow .15s; margin: 0 2px;}
+#stars span.selectedStar { text-shadow: 0 2px 9px #ffe06699;}
+h2, h3 { color:#ffe066;font-family:'Georgia',serif;margin-bottom:6px;letter-spacing:1px; }
+footer { margin-top:55px;text-align:center;color:#ffe066be;background:rgba(21,30,65,.91);font-size:1.09rem;padding: 18px 0 10px 0;border-radius: 18px 18px 0 0;box-shadow:0 -2px 17px #23294644 inset;}
+#ratingText{margin-top:8px;color: #ffe066;font-weight: 600;font-size: 1.08em;}
+</style>
+</head>
+<body>
+<header>
+<h1>Community System</h1>
+<nav>
+<ul>
+<li><a href="index.html">Home</a></li>
+    <li><a href="about.html">About Us</a></li>
+    <li><a href="login.html">Login</a></li>
+    <li><a href="services.html">Services</a></li>
+    <li><a href="gallery.html">Gallery</a></li>
+    <li><a href="complaints.html">Complaints</a></li>
+    <li><a href="contact.html">Contact</a></li>
+    <li><a href="stats.html" class="active">Rating & Statistics</a></li>
+</ul>
+</nav>
+</header>
+<section class="page-box">
+<h2>Interactive Community Stats</h2>
+<p>Enter values below and see the calculations instantly:</p>
+<label>Total Residents:</label>
+<input type="number" id="residents" placeholder="Enter number of residents">
+<label>Total Workers:</label>
+<input type="number" id="workers" placeholder="Enter number of workers">
+<label>Total Complaints:</label>
+<input type="number" id="complaints" placeholder="Enter total complaints">
+<label>Resolved Complaints:</label>
+<input type="number" id="resolvedComplaints" placeholder="Enter resolved complaints">
+<button onclick="calculateStats()">Show Stats</button>
+<button onclick="greetUser()">Click Me!</button>
+<div id="statsBoxesRow"></div>
+<h3>Rate Our Community</h3>
+<div id="stars">
+<span onclick="rate(1)">★</span>
+<span onclick="rate(2)">★</span>
+<span onclick="rate(3)">★</span>
+<span onclick="rate(4)">★</span>
+<span onclick="rate(5)">★</span>
+</div>
+<p id="ratingText"></p>
+</section>
+<footer>
+<p>&copy; 2025 Community Management System</p>
+</footer>
+<script>
+function calculateStats() {
+  let residents = parseInt(document.getElementById("residents").value) || 0;
+  let workers = parseInt(document.getElementById("workers").value) || 0;
+  let complaints = parseInt(document.getElementById("complaints").value) || 0;
+  let resolvedComplaints = parseInt(document.getElementById("resolvedComplaints").value) || 0;
+  let totalPeople = residents + workers;
+  let pendingComplaints = complaints - resolvedComplaints;
+  let avgComplaintsPerResident = residents > 0 ? (complaints / residents) : 0;
+  let extraStaffNeeded = (pendingComplaints > workers) ? "Yes" : "No";
+  let doubleWorkers = workers * 2;
+  const stats = [
+    {title: "Total Residents", value: residents},
+    {title: "Total Workers", value: workers},
+    {title: "Total People", value: totalPeople},
+    {title: "Total Complaints", value: complaints},
+    {title: "Resolved Complaints", value: resolvedComplaints},
+    {title: "Pending Complaints", value: pendingComplaints},
+    {title: "Avg Complaints per Resident", value: avgComplaintsPerResident.toFixed(2)},
+    {title: "Need Extra Staff?", value: extraStaffNeeded},
+    {title: "If Workers Doubled", value: doubleWorkers}
+  ];
+  let html = stats.map(s=>`
+    <div class="stat-box">
+      <div class="stat-title">${s.title}</div>
+      <div class="stat-value">${s.value}</div>
+    </div>
+  `).join('');
+  document.getElementById("statsBoxesRow").innerHTML = html;
+}
+function greetUser() {
+  alert("Hello! Welcome to our Community ");
+}
+function rate(stars) {
+  var all = document.querySelectorAll("#stars span");
+  all.forEach((span, i) => {
+    if (i < stars) span.classList.add("selectedStar");
+    else span.classList.remove("selectedStar");
+  });
+  document.getElementById("ratingText").innerText = "You rated " + stars + " stars!";
+}
+const starSpans=document.querySelectorAll("#stars span");
+starSpans.forEach((span, idx)=>{
+  span.onmouseover=()=>starSpans.forEach((s,i)=>s.style.opacity=i<=idx?'1':'0.5');
+  span.onmouseout=()=>starSpans.forEach(s=>s.style.opacity='1');
+});
+let a = 10, b = 5;
+console.log("Addition: " + (a+b));
+if (a > b) { console.log("a is greater than b"); }
+for (let i=1; i<=3; i++) {
+  console.log("Loop count: " + i);
+}
+document.body.addEventListener("keydown", function() {
+  console.log("A key was pressed!");
+});
+document.cookie = "username=Angel; expires=Fri, 31 Dec 2025 12:00:00 UTC; path=/";
+console.log("Cookies: " + document.cookie);
+</script>
+</body>
+</html>
