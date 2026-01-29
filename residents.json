@@ -1,0 +1,42 @@
+[
+  {
+    "id": 101,
+    "name": "Angel Mary Sony",
+    "apartment": "A-501",
+    "complaints": 3,
+    "amountDue": 1450.75,
+    "lastPayment": "2025-01-15",
+    "status": "Active",
+    "category": "Maintenance"
+  },
+  {
+    "id": 102,
+    "name": "Priya Nair",
+    "apartment": "B-203",
+    "complaints": 1,
+    "amountDue": 0,
+    "lastPayment": "2024-12-20",
+    "status": "Resolved",
+    "category": "Security"
+  },
+  {
+    "id": 103,
+    "name": "Rahul Sharma",
+    "apartment": "C-405",
+    "complaints": 5,
+    "amountDue": 3200.50,
+    "lastPayment": "2025-02-01",
+    "status": "Pending",
+    "category": "Services"
+  },
+  {
+    "id": 104,
+    "name": "Sneha Thomas",
+    "apartment": "D-112",
+    "complaints": 0,
+    "amountDue": 850.25,
+    "lastPayment": "2025-01-10",
+    "status": "Active",
+    "category": "Others"
+  }
+]
